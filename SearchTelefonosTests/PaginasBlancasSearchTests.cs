@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.Linq;
 
@@ -16,7 +17,7 @@ namespace SearchTelefonos.Tests
             Assert.IsTrue(client.Support.Contains(ParamSerach.ByNames));
             var phones = client.SearchTelefonos(name);
             Assert.IsNotNull(phones);
-            Trace.Write(phones);
+            Trace.Write(string.Join(Environment.NewLine, phones));
         }
     }
 }

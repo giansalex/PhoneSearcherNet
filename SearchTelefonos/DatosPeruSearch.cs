@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System.Collections.Generic;
 using HtmlAgilityPack;
 
 namespace SearchTelefonos
@@ -14,15 +10,15 @@ namespace SearchTelefonos
 
         public string Domain { get { return domain; } }
 
-        public string Name { get { return "DAT"; } }
+        public string Name { get { return "DP"; } }
 
-        public string SearchTelefonos(string value)
+        public IEnumerable<string> SearchTelefonos(string value)
         {
             var web = new HtmlWeb();
             var doc = web.Load(domain + "/buscador_empresas.php?buscar=" + value);
             var aHref = doc.DocumentNode.SelectSingleNode("//*[@id='categorias']/div[3]/div/div/a");
             if (aHref == null) return null;
-            
+
             var link = aHref.Attributes["href"].Value;
             doc = web.Load(domain + "/" + link);
             var infoDiv = doc.DocumentNode.SelectSingleNode("//*[@itemtype='http://schema.org/Organization']");
@@ -39,12 +35,12 @@ namespace SearchTelefonos
                 }
                 lastItem = lastItem.PreviousSibling;
             }
-            return string.Join(",", phones);
+            return phones;
         }
 
         public ParamSerach[] Support
         {
-            get { return new[] {ParamSerach.ByDocument, ParamSerach.ByNames, }; } 
+            get { return new[] { ParamSerach.ByDocument, ParamSerach.ByNames, }; }
         }
     }
 }

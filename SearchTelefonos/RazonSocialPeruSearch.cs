@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 
@@ -10,9 +11,9 @@ namespace SearchTelefonos
 
         public string Domain { get { return domain; } }
 
-        public string Name { get { return "RSZ"; } }
+        public string Name { get { return "RZP"; } }
 
-        public string SearchTelefonos(string value)
+        public IEnumerable<string> SearchTelefonos(string value)
         {
             var url = domain + "/empresa/buscador?query=" + value;
             var json = GetJson(url);
@@ -23,8 +24,7 @@ namespace SearchTelefonos
             var web = new HtmlWeb();
             var doc = web.Load(link);
             var telf = doc.DocumentNode.SelectSingleNode("//*[@id='content']/article/div/div[2]/div[1]/div[2]/ul/li[7]");
-            if (telf == null) return null;
-            return telf.InnerText;
+            return telf == null ? null : new[] { telf.InnerText };
         }
 
 
@@ -33,7 +33,7 @@ namespace SearchTelefonos
             using (var client = new WebClient())
             {
                 return client.DownloadString(url);
-            } 
+            }
         }
 
         public ParamSerach[] Support

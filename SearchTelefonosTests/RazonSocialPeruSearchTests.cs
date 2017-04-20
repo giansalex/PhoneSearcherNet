@@ -18,7 +18,7 @@ namespace SearchTelefonos.Tests
             Assert.IsTrue(client.Support.Contains(ParamSerach.ByDocument));
             var phones = client.SearchTelefonos("20332600592");
             Assert.IsNotNull(phones);
-            Trace.Write(phones);
+            Trace.Write(string.Join(Environment.NewLine, phones));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace SearchTelefonos.Tests
             Assert.IsTrue(client.Support.Contains(ParamSerach.ByDocument));
             var phones = client.SearchTelefonos(ruc);
             Assert.IsNotNull(phones);
-            Trace.Write(phones);
+            Trace.Write(string.Join(Environment.NewLine, phones));
         }
     }
 }

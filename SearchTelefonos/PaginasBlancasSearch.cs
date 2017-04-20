@@ -15,22 +15,24 @@ namespace SearchTelefonos
 
         public string Name { get { return "PBL"; } }
 
-        public string SearchTelefonos(string value)
+        public IEnumerable<string> SearchTelefonos(string value)
         {
             var url = domain + "/persona/" + ClearText(value);
             var doc = new HtmlWeb().Load(url);
-            var containers = doc.DocumentNode.SelectNodes("//span[@class='m-icon--single-phone']");
+            var containers = doc.DocumentNode.SelectNodes("//li[@itemtype='http://schema.org/Person']");
+            //var containers = doc.DocumentNode.SelectNodes("//span[@class='m-icon--single-phone']");
 
             var phones = new Queue<string>();
-
+            
             foreach (var node in containers)
             {
-                var a = node.ChildNodes.FindFirst("a");
-                if (a == null) continue;
-                phones.Enqueue(a.InnerText.Trim());
+                var name = node.SelectSingleNode("./div[1]/div[1]/h3/a");
+                var phone = node.SelectSingleNode("./div[2]/ul/li[1]/div/span[2]/a");
+                if (phone == null || name == null) continue;
+                phones.Enqueue(phone.InnerText.Trim() + " "+ name.InnerText.Trim());
             }
 
-            return string.Join(",", phones);
+            return phones;
         }
 
         public ParamSerach[] Support

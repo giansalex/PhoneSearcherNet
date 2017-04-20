@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using HtmlAgilityPack;
@@ -17,7 +15,7 @@ namespace SearchTelefonos
 
         public string Name { get { return "UNV"; } }
 
-        public string SearchTelefonos(string value)
+        public IEnumerable<string> SearchTelefonos(string value)
         {
             var url = "https://www.universidadperu.com/empresas/busqueda/";
             var param = "buscaempresa=" + value;
@@ -34,7 +32,7 @@ namespace SearchTelefonos
                 phones.Enqueue(node.ChildNodes.FindFirst("span").InnerText);
             }
 
-            return string.Join(",", phones);
+            return phones;
         }
 
         public ParamSerach[] Support

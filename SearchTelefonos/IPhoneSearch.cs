@@ -34,7 +34,7 @@ namespace SearchTelefonos
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        string SearchTelefonos(string value);
+        IEnumerable<string> SearchTelefonos(string value);
 
         /// <summary>
         /// Obtiene los metodos que soporta la página.
