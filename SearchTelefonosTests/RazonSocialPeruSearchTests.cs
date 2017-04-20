@@ -15,7 +15,7 @@ namespace SearchTelefonos.Tests
         public void SearchTelefonosTest()
         {
             IPhoneSearch client = new RazonSocialPeruSearch();
-            Assert.IsTrue(client.Support == ParamSerach.ByDocument);
+            Assert.IsTrue(client.Support.Contains(ParamSerach.ByDocument));
             var phones = client.SearchTelefonos("20332600592");
             Assert.IsNotNull(phones);
             Trace.Write(phones);

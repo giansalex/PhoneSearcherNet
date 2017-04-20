@@ -25,6 +25,11 @@ namespace SearchTelefonos
         string Domain { get; }
 
         /// <summary>
+        /// Nombre abreviado de la Pagina.
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Realiza la busqueda de telefonos.
         /// </summary>
         /// <param name="value"></param>
@@ -34,6 +39,6 @@ namespace SearchTelefonos
         /// <summary>
         /// Obtiene los metodos que soporta la página.
         /// </summary>
-        ParamSerach Support { get; }
+        ParamSerach[] Support { get; }
     }
 }

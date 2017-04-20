@@ -17,7 +17,7 @@ namespace SearchTelefonos.Tests
             var ruc = "20332600592";
 
             IPhoneSearch client = new UniversidadPeruSearch();
-            Assert.IsTrue(client.Support == ParamSerach.ByDocument);
+            Assert.IsTrue(client.Support.Contains(ParamSerach.ByDocument));
             var phones = client.SearchTelefonos(ruc);
             Assert.IsNotNull(phones);
             Trace.Write(phones);

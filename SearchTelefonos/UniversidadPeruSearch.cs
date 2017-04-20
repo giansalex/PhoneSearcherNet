@@ -15,6 +15,8 @@ namespace SearchTelefonos
         /// <inheritdoc cref="Domain"/>
         public string Domain { get { return domain; } }
 
+        public string Name { get { return "UNV"; } }
+
         public string SearchTelefonos(string value)
         {
             var url = "https://www.universidadperu.com/empresas/busqueda/";
@@ -35,7 +37,10 @@ namespace SearchTelefonos
             return string.Join(",", phones);
         }
 
-        public ParamSerach Support { get; }
+        public ParamSerach[] Support
+        {
+            get { return new[] { ParamSerach.ByDocument }; }
+        }
 
         private string LoadPage(string url, string args)
         {

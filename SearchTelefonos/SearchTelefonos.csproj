@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DatosPeruSearch.cs" />
     <Compile Include="IPhoneSearch.cs" />
+    <Compile Include="PaginasBlancasSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RazonSocialPeruSearch.cs" />
     <Compile Include="UniversidadPeruSearch.cs" />

@@ -14,6 +14,8 @@ namespace SearchTelefonos
 
         public string Domain { get { return domain; } }
 
+        public string Name { get { return "DAT"; } }
+
         public string SearchTelefonos(string value)
         {
             var web = new HtmlWeb();
@@ -40,9 +42,9 @@ namespace SearchTelefonos
             return string.Join(",", phones);
         }
 
-        public ParamSerach Support
+        public ParamSerach[] Support
         {
-            get { return ParamSerach.ByDocument; } 
+            get { return new[] {ParamSerach.ByDocument, ParamSerach.ByNames, }; } 
         }
     }
 }

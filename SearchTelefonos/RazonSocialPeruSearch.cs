@@ -10,6 +10,8 @@ namespace SearchTelefonos
 
         public string Domain { get { return domain; } }
 
+        public string Name { get { return "RSZ"; } }
+
         public string SearchTelefonos(string value)
         {
             var url = domain + "/empresa/buscador?query=" + value;
@@ -34,9 +36,9 @@ namespace SearchTelefonos
             } 
         }
 
-        public ParamSerach Support
+        public ParamSerach[] Support
         {
-            get { return ParamSerach.ByDocument; }
+            get { return new[] { ParamSerach.ByDocument }; }
         }
     }
 }
