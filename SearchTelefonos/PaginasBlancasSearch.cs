@@ -20,7 +20,7 @@ namespace SearchTelefonos
             var url = domain + "/persona/" + ClearText(value);
             var doc = new HtmlWeb().Load(url);
             var containers = doc.DocumentNode.SelectNodes("//li[@itemtype='http://schema.org/Person']");
-            //var containers = doc.DocumentNode.SelectNodes("//span[@class='m-icon--single-phone']");
+            if (containers == null) return null;
 
             var phones = new Queue<string>();
             
